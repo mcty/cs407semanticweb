@@ -1,0 +1,940 @@
+@prefix : <http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.taco.com/ontologies/taco.owl> .
+
+<http://www.taco.com/ontologies/taco.owl> rdf:type owl:Ontology ;
+                                           rdfs:comment "Tyler MacNeil, CS 407 - Class Project"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isIngredientOf ;
+               rdfs:domain :Taco .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasShellType
+:hasShellType rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :ShellTypeValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasSpiciness
+:hasSpiciness rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:range :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#isIngredientOf
+:isIngredientOf rdf:type owl:ObjectProperty ;
+                rdfs:domain :Taco .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Basmati
+:Basmati rdf:type owl:Class ;
+         rdfs:subClassOf :Rice .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Beans
+:Beans rdf:type owl:Class ;
+       rdfs:subClassOf :SecondaryFiller ;
+       owl:disjointWith :Rice .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Beef
+:Beef rdf:type owl:Class ;
+      rdfs:subClassOf :Meat .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#BellPepper
+:BellPepper rdf:type owl:Class ;
+            rdfs:subClassOf :Pepper ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Mild
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Black
+:Black rdf:type owl:Class ;
+       rdfs:subClassOf :Beans .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Brown
+:Brown rdf:type owl:Class ;
+       rdfs:subClassOf :Rice .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Cannellini
+:Cannellini rdf:type owl:Class ;
+            rdfs:subClassOf :Beans .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Cheeder
+:Cheeder rdf:type owl:Class ;
+         rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Cheese
+:Cheese rdf:type owl:Class ;
+        rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Chicken
+:Chicken rdf:type owl:Class ;
+         rdfs:subClassOf :Meat .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Chickpeas
+:Chickpeas rdf:type owl:Class ;
+           rdfs:subClassOf :Beans .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Condements
+:Condements rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#DaBomb
+:DaBomb rdf:type owl:Class ;
+        rdfs:subClassOf :HotSause ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasSpiciness ;
+                          owl:someValuesFrom :Hot
+                        ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Filler
+:Filler rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Fish
+:Fish rdf:type owl:Class ;
+      rdfs:subClassOf :Meat .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Fotins
+:Fotins rdf:type owl:Class ;
+        rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#FranksRedHot
+:FranksRedHot rdf:type owl:Class ;
+              rdfs:subClassOf :HotSause ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasSpiciness ;
+                                owl:someValuesFrom :Mild
+                              ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#GreenPepper
+:GreenPepper rdf:type owl:Class ;
+             rdfs:subClassOf :Pepper ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Medium
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#GreenSalasa
+:GreenSalasa rdf:type owl:Class ;
+             rdfs:subClassOf :Salsa ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Mild
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Guacamole
+:Guacamole rdf:type owl:Class ;
+           rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Hard
+:Hard rdf:type owl:Class ;
+      rdfs:subClassOf :ShellTypeValuePartition ;
+      owl:disjointWith :Soft .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#HardCornTortilla
+:HardCornTortilla rdf:type owl:Class ;
+                  rdfs:subClassOf :Shell ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasShellType ;
+                                    owl:someValuesFrom :Hard
+                                  ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#HardFlourTortilla
+:HardFlourTortilla rdf:type owl:Class ;
+                   rdfs:subClassOf :Shell ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasShellType ;
+                                     owl:someValuesFrom :Hard
+                                   ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Hot
+:Hot rdf:type owl:Class ;
+     rdfs:subClassOf :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#HotSause
+:HotSause rdf:type owl:Class ;
+          rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#JalapenoPepper
+:JalapenoPepper rdf:type owl:Class ;
+                rdfs:subClassOf :Pepper ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasSpiciness ;
+                                  owl:someValuesFrom :Hot
+                                ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Jasmine
+:Jasmine rdf:type owl:Class ;
+         rdfs:subClassOf :Rice .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Ketchup
+:Ketchup rdf:type owl:Class ;
+         rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Kidney
+:Kidney rdf:type owl:Class ;
+        rdfs:subClassOf :Beans .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Lettuce
+:Lettuce rdf:type owl:Class ;
+         rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#LettuceShell
+:LettuceShell rdf:type owl:Class ;
+              rdfs:subClassOf :Shell .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Lima
+:Lima rdf:type owl:Class ;
+      rdfs:subClassOf :Beans .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#LimeJuice
+:LimeJuice rdf:type owl:Class ;
+           rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MainFIller
+:MainFIller rdf:type owl:Class ;
+            rdfs:subClassOf :Filler ;
+            owl:disjointWith :SecondaryFiller .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Manchego
+:Manchego rdf:type owl:Class ;
+          rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Meat
+:Meat rdf:type owl:Class ;
+      rdfs:subClassOf :MainFIller ;
+      owl:disjointWith :MeatSubstitute .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MeatLoversTaco
+:MeatLoversTaco rdf:type owl:Class ;
+                rdfs:subClassOf :MeatTacos ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasShellType ;
+                                                         owl:someValuesFrom :Soft
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasIngredient ;
+                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                         owl:onClass :Shell
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Beef
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Chicken
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Turkey
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Beans
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Rice
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Condements
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Topping
+                                ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MeatSubstitute
+:MeatSubstitute rdf:type owl:Class ;
+                rdfs:subClassOf :MainFIller .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MeatTacos
+:MeatTacos rdf:type owl:Class ;
+           rdfs:subClassOf :Taco ;
+           owl:disjointWith :NonMeatTacos .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Medium
+:Medium rdf:type owl:Class ;
+        rdfs:subClassOf :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Mild
+:Mild rdf:type owl:Class ;
+      rdfs:subClassOf :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#NachoCheese
+:NachoCheese rdf:type owl:Class ;
+             rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#NoMeatNoProblemTaco
+:NoMeatNoProblemTaco rdf:type owl:Class ;
+                     rdfs:subClassOf :NonMeatTacos ,
+                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :hasShellType ;
+                                                              owl:someValuesFrom :Soft
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :hasIngredient ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass :Shell
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasIngredient ;
+                                       owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :MeatSubstitute
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasIngredient ;
+                                       owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :SecondaryFiller
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasIngredient ;
+                                       owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :Condements
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasIngredient ;
+                                       owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :Topping
+                                     ] ;
+                     owl:disjointWith :VeggieOverloadTaco .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#NonMeatTacos
+:NonMeatTacos rdf:type owl:Class ;
+              rdfs:subClassOf :Taco .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Onion
+:Onion rdf:type owl:Class ;
+       rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Pepper
+:Pepper rdf:type owl:Class ;
+        rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#PepperJack
+:PepperJack rdf:type owl:Class ;
+            rdfs:subClassOf :Cheese ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Medium
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Pinto
+:Pinto rdf:type owl:Class ;
+       rdfs:subClassOf :Beans .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#RedOnion
+:RedOnion rdf:type owl:Class ;
+          rdfs:subClassOf :Onion ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasSpiciness ;
+                            owl:someValuesFrom :Mild
+                          ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#RedPepper
+:RedPepper rdf:type owl:Class ;
+           rdfs:subClassOf :Pepper ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasSpiciness ;
+                             owl:someValuesFrom :Medium
+                           ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#RedSalsa
+:RedSalsa rdf:type owl:Class ;
+          rdfs:subClassOf :Salsa ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasSpiciness ;
+                            owl:someValuesFrom :Hot
+                          ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Rice
+:Rice rdf:type owl:Class ;
+      rdfs:subClassOf :SecondaryFiller .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Ricotta
+:Ricotta rdf:type owl:Class ;
+         rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Salsa
+:Salsa rdf:type owl:Class ;
+       rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SecondaryFiller
+:SecondaryFiller rdf:type owl:Class ;
+                 rdfs:subClassOf :Filler .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Shell
+:Shell rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#ShellTypeValuePartition
+:ShellTypeValuePartition rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Hard
+                                                             :Soft
+                                                           )
+                                             ] ;
+                         rdfs:subClassOf :ValuePartition ;
+                         owl:disjointWith :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Soft
+:Soft rdf:type owl:Class ;
+      rdfs:subClassOf :ShellTypeValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SoftCornTortilla
+:SoftCornTortilla rdf:type owl:Class ;
+                  rdfs:subClassOf :Shell ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasShellType ;
+                                    owl:someValuesFrom :Soft
+                                  ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SoftFlourTortilla
+:SoftFlourTortilla rdf:type owl:Class ;
+                   rdfs:subClassOf :Shell ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasShellType ;
+                                     owl:someValuesFrom :Soft
+                                   ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SourCream
+:SourCream rdf:type owl:Class ;
+           rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Soy
+:Soy rdf:type owl:Class ;
+     rdfs:subClassOf :MeatSubstitute .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicinessValuePartition
+:SpicinessValuePartition rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Hot
+                                                             :Medium
+                                                             :Mild
+                                                           )
+                                             ] ;
+                         rdfs:subClassOf :ValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicyBeef
+:SpicyBeef rdf:type owl:Class ;
+           rdfs:subClassOf :Meat ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasSpiciness ;
+                             owl:someValuesFrom :Medium
+                           ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicyChicken
+:SpicyChicken rdf:type owl:Class ;
+              rdfs:subClassOf :Meat ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasSpiciness ;
+                                owl:someValuesFrom :Medium
+                              ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicyLoversTaco
+:SpicyLoversTaco rdf:type owl:Class ;
+                 rdfs:subClassOf :MeatTacos ,
+                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasShellType ;
+                                                          owl:someValuesFrom :Soft
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasIngredient ;
+                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass :Shell
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:someValuesFrom :SourCream
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :DaBomb
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :PepperJack
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :RedSalsa
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :SpicyBeef
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :SpicyChicken
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :SpicyTurkey
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Pepper
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Beans
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIngredient ;
+                                   owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Rice
+                                 ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicySoy
+:SpicySoy rdf:type owl:Class ;
+          rdfs:subClassOf :MeatSubstitute ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasSpiciness ;
+                            owl:someValuesFrom :Medium
+                          ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicyTofu
+:SpicyTofu rdf:type owl:Class ;
+           rdfs:subClassOf :MeatSubstitute ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasSpiciness ;
+                             owl:someValuesFrom :Medium
+                           ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicyTurkey
+:SpicyTurkey rdf:type owl:Class ;
+             rdfs:subClassOf :Meat ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Medium
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#StuffedTaco
+:StuffedTaco rdf:type owl:Class ;
+             rdfs:subClassOf :MeatTacos ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasIngredient ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Shell
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasIngredient ;
+                               owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Meat
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasIngredient ;
+                               owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                               owl:onClass :SecondaryFiller
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasIngredient ;
+                               owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Condements
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasIngredient ;
+                               owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Topping
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SweetBeef
+:SweetBeef rdf:type owl:Class ;
+           rdfs:subClassOf :Meat .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SweetTofu
+:SweetTofu rdf:type owl:Class ;
+           rdfs:subClassOf :MeatSubstitute .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Taco
+:Taco rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Tofu
+:Tofu rdf:type owl:Class ;
+      rdfs:subClassOf :MeatSubstitute .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Tomato
+:Tomato rdf:type owl:Class ;
+        rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Topping
+:Topping rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Turkey
+:Turkey rdf:type owl:Class ;
+        rdfs:subClassOf :Meat .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Valentinos
+:Valentinos rdf:type owl:Class ;
+            rdfs:subClassOf :HotSause ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Medium
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#ValuePartition
+:ValuePartition rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#VeggieOverloadTaco
+:VeggieOverloadTaco rdf:type owl:Class ;
+                    rdfs:subClassOf :NonMeatTacos ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasShellType ;
+                                                             owl:someValuesFrom :Soft
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasIngredient ;
+                                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Shell
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:someValuesFrom :Lettuce
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Guacamole
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Tomato
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :MeatSubstitute
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Onion
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Pepper
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Condements
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasIngredient ;
+                                      owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :SecondaryFiller
+                                    ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#White
+:White rdf:type owl:Class ;
+       rdfs:subClassOf :Rice .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#WhiteOnion
+:WhiteOnion rdf:type owl:Class ;
+            rdfs:subClassOf :Onion ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Mild
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#YellowOnion
+:YellowOnion rdf:type owl:Class ;
+             rdfs:subClassOf :Onion ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Mild
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#YellowPepper
+:YellowPepper rdf:type owl:Class ;
+              rdfs:subClassOf :Pepper ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasSpiciness ;
+                                owl:someValuesFrom :Mild
+                              ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#YellowSalsa
+:YellowSalsa rdf:type owl:Class ;
+             rdfs:subClassOf :Salsa ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Medium
+                             ] .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Basmati
+                :Brown
+                :Jasmine
+                :White
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Beef
+                :Chicken
+                :Fish
+                :SpicyBeef
+                :SpicyChicken
+                :SpicyTurkey
+                :SweetBeef
+                :Turkey
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BellPepper
+                :GreenPepper
+                :JalapenoPepper
+                :RedPepper
+                :YellowPepper
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Black
+                :Cannellini
+                :Chickpeas
+                :Kidney
+                :Lima
+                :Pinto
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheeder
+                :Fotins
+                :Manchego
+                :PepperJack
+                :Ricotta
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheese
+                :Lettuce
+                :Onion
+                :Pepper
+                :Tomato
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheese
+                :Lettuce
+                :Onion
+                :Tomato
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DaBomb
+                :FranksRedHot
+                :Valentinos
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GreenSalasa
+                :RedSalsa
+                :YellowSalsa
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Guacamole
+                :HotSause
+                :Ketchup
+                :LimeJuice
+                :NachoCheese
+                :Salsa
+                :SourCream
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :HardCornTortilla
+                :HardFlourTortilla
+                :LettuceShell
+                :SoftCornTortilla
+                :SoftFlourTortilla
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Hot
+                :Medium
+                :Mild
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :MeatLoversTaco
+                :SpicyLoversTaco
+                :StuffedTaco
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :RedOnion
+                :WhiteOnion
+                :YellowOnion
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Soy
+                :SpicySoy
+                :SpicyTofu
+                :SweetTofu
+                :Tofu
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
