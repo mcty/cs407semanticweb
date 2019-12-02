@@ -16,13 +16,14 @@
 ###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasIngredient
 :hasIngredient rdf:type owl:ObjectProperty ;
                owl:inverseOf :isIngredientOf ;
-               rdfs:domain :Taco .
+               rdf:type owl:TransitiveProperty ;
+               rdfs:domain owl:Thing .
 
 
 ###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasShellType
 :hasShellType rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
-              rdfs:domain :ShellTypeValuePartition .
+              rdfs:range :ShellTypeValuePartition .
 
 
 ###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasSpiciness
@@ -32,8 +33,13 @@
 
 
 ###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#isIngredientOf
-:isIngredientOf rdf:type owl:ObjectProperty ;
-                rdfs:domain :Taco .
+:isIngredientOf rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#numberOfIngredient
+:numberOfIngredient rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Taco .
 
 
 #################################################################
@@ -262,7 +268,7 @@
                                                          owl:someValuesFrom :Soft
                                                        ]
                                                        [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasIngredient ;
+                                                         owl:onProperty :numberOfIngredient ;
                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                          owl:onClass :Shell
                                                        ]
@@ -271,36 +277,82 @@
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Beans
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Beef
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Chicken
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Condements
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Rice
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Shell
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Topping
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:someValuesFrom :Turkey
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( :Beans
+                                                                    :Beef
+                                                                    :Chicken
+                                                                    :Condements
+                                                                    :Rice
+                                                                    :Shell
+                                                                    :Topping
+                                                                    :Turkey
+                                                                  )
+                                                    ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Beef
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasIngredient ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Chicken
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasIngredient ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Turkey
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasIngredient ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Beans
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasIngredient ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Rice
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasIngredient ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Condements
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasIngredient ;
+                                  owl:onProperty :numberOfIngredient ;
                                   owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Topping
                                 ] .
@@ -340,7 +392,7 @@
                                                               owl:someValuesFrom :Soft
                                                             ]
                                                             [ rdf:type owl:Restriction ;
-                                                              owl:onProperty :hasIngredient ;
+                                                              owl:onProperty :numberOfIngredient ;
                                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                               owl:onClass :Shell
                                                             ]
@@ -348,22 +400,22 @@
                                        rdf:type owl:Class
                                      ] ,
                                      [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasIngredient ;
+                                       owl:onProperty :numberOfIngredient ;
                                        owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                        owl:onClass :MeatSubstitute
                                      ] ,
                                      [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasIngredient ;
+                                       owl:onProperty :numberOfIngredient ;
                                        owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                        owl:onClass :SecondaryFiller
                                      ] ,
                                      [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasIngredient ;
+                                       owl:onProperty :numberOfIngredient ;
                                        owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                        owl:onClass :Condements
                                      ] ,
                                      [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasIngredient ;
+                                       owl:onProperty :numberOfIngredient ;
                                        owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
                                        owl:onClass :Topping
                                      ] ;
@@ -531,7 +583,7 @@
                                                           owl:someValuesFrom :Soft
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasIngredient ;
+                                                          owl:onProperty :numberOfIngredient ;
                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                           owl:onClass :Shell
                                                         ]
@@ -539,51 +591,52 @@
                                    rdf:type owl:Class
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
-                                   owl:someValuesFrom :SourCream
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :DaBomb
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :PepperJack
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :RedSalsa
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :SourCream
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :SpicyBeef
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :SpicyChicken
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :SpicyTurkey
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Pepper
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Beans
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasIngredient ;
+                                   owl:onProperty :numberOfIngredient ;
                                    owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Rice
                                  ] .
@@ -620,27 +673,27 @@
 :StuffedTaco rdf:type owl:Class ;
              rdfs:subClassOf :MeatTacos ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasIngredient ;
+                               owl:onProperty :numberOfIngredient ;
                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                owl:onClass :Shell
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasIngredient ;
+                               owl:onProperty :numberOfIngredient ;
                                owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                owl:onClass :Meat
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasIngredient ;
+                               owl:onProperty :numberOfIngredient ;
                                owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                owl:onClass :SecondaryFiller
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasIngredient ;
+                               owl:onProperty :numberOfIngredient ;
                                owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                owl:onClass :Condements
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasIngredient ;
+                               owl:onProperty :numberOfIngredient ;
                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
                                owl:onClass :Topping
                              ] .
@@ -700,7 +753,7 @@
                                                              owl:someValuesFrom :Soft
                                                            ]
                                                            [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasIngredient ;
+                                                             owl:onProperty :numberOfIngredient ;
                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :Shell
                                                            ]
@@ -708,41 +761,42 @@
                                       rdf:type owl:Class
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
-                                      owl:someValuesFrom :Lettuce
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                       owl:onClass :Guacamole
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Lettuce
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                       owl:onClass :Tomato
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                       owl:onClass :MeatSubstitute
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                                       owl:onClass :Onion
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                       owl:onClass :Pepper
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                       owl:onClass :Condements
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasIngredient ;
+                                      owl:onProperty :numberOfIngredient ;
                                       owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                       owl:onClass :SecondaryFiller
                                     ] .
@@ -861,6 +915,16 @@
                 :Lettuce
                 :Onion
                 :Tomato
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Condements
+                :Filler
+                :Shell
+                :Taco
+                :Topping
               )
 ] .
 
