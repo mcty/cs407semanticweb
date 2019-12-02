@@ -1,0 +1,794 @@
+@prefix : <http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.taco.com/ontologies/taco.owl> .
+
+<http://www.taco.com/ontologies/taco.owl> rdf:type owl:Ontology ;
+                                           rdfs:comment "Tyler MacNeil, CS 407 - Class Project"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isIngredientOf ;
+               rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasShellType
+:hasShellType rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:range :ShellTypeValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#hasSpiciness
+:hasSpiciness rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:range :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#isIngredientOf
+:isIngredientOf rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty .
+
+
+###  http://www.taco.com/ontologies/taco.owl#fromRestaurant
+:fromRestaurant rdf:type owl:ObjectProperty ;
+                owl:inverseOf :restaurantHas .
+
+
+###  http://www.taco.com/ontologies/taco.owl#hasCondiment
+:hasCondiment rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasIngredient ;
+              owl:inverseOf :isCondimentOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#hasFilling
+:hasFilling rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :hasIngredient ;
+            owl:inverseOf :isFillingOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#hasShell
+:hasShell rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasIngredient ;
+          owl:inverseOf :isShellOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#hasTopping
+:hasTopping rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :hasIngredient ;
+            owl:inverseOf :isToppingOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#isCondimentOf
+:isCondimentOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isIngredientOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#isFillingOf
+:isFillingOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :isIngredientOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#isShellOf
+:isShellOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :isIngredientOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#isToppingOf
+:isToppingOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :isIngredientOf .
+
+
+###  http://www.taco.com/ontologies/taco.owl#restaurantHas
+:restaurantHas rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.taco.com/ontologies/taco.owl#alwaysForSale
+:alwaysForSale rdf:type owl:DatatypeProperty .
+
+
+###  http://www.taco.com/ontologies/taco.owl#hasPrice
+:hasPrice rdf:type owl:DatatypeProperty .
+
+
+###  http://www.taco.com/ontologies/taco.owl#hasRating
+:hasRating rdf:type owl:DatatypeProperty .
+
+
+###  http://www.taco.com/ontologies/taco.owl#numberOfIngredient
+:numberOfIngredient rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Beans
+:Beans rdf:type owl:Class ;
+       rdfs:subClassOf :SecondaryFiller ;
+       owl:disjointWith :Rice .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#BellPepper
+:BellPepper rdf:type owl:Class ;
+            rdfs:subClassOf :Pepper ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Mild
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Cheeder
+:Cheeder rdf:type owl:Class ;
+         rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Cheese
+:Cheese rdf:type owl:Class ;
+        rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Condements
+:Condements rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Filler
+:Filler rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Fotins
+:Fotins rdf:type owl:Class ;
+        rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#GreenPepper
+:GreenPepper rdf:type owl:Class ;
+             rdfs:subClassOf :Pepper ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Medium
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Hard
+:Hard rdf:type owl:Class ;
+      rdfs:subClassOf :ShellTypeValuePartition ;
+      owl:disjointWith :Soft .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Hot
+:Hot rdf:type owl:Class ;
+     rdfs:subClassOf :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#HotSause
+:HotSause rdf:type owl:Class ;
+          rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#JalapenoPepper
+:JalapenoPepper rdf:type owl:Class ;
+                rdfs:subClassOf :Pepper ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasSpiciness ;
+                                  owl:someValuesFrom :Hot
+                                ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Lettuce
+:Lettuce rdf:type owl:Class ;
+         rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MainFIller
+:MainFIller rdf:type owl:Class ;
+            rdfs:subClassOf :Filler ;
+            owl:disjointWith :SecondaryFiller .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Manchego
+:Manchego rdf:type owl:Class ;
+          rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Meat
+:Meat rdf:type owl:Class ;
+      rdfs:subClassOf :MainFIller ;
+      owl:disjointWith :MeatSubstitute .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MeatSubstitute
+:MeatSubstitute rdf:type owl:Class ;
+                rdfs:subClassOf :MainFIller .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#MeatTacos
+:MeatTacos rdf:type owl:Class ;
+           rdfs:subClassOf :Taco ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasFilling ;
+                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :Meat
+                                                               :SecondaryFiller
+                                                             )
+                                               ]
+                           ] ;
+           owl:disjointWith :NonMeatTacos .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Medium
+:Medium rdf:type owl:Class ;
+        rdfs:subClassOf :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Mild
+:Mild rdf:type owl:Class ;
+      rdfs:subClassOf :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#NonMeatTacos
+:NonMeatTacos rdf:type owl:Class ;
+              rdfs:subClassOf :Taco ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasFilling ;
+                                owl:allValuesFrom [ rdf:type owl:Class ;
+                                                    owl:unionOf ( :MeatSubstitute
+                                                                  :SecondaryFiller
+                                                                )
+                                                  ]
+                              ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Onion
+:Onion rdf:type owl:Class ;
+       rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Pepper
+:Pepper rdf:type owl:Class ;
+        rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#PepperJack
+:PepperJack rdf:type owl:Class ;
+            rdfs:subClassOf :Cheese ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Medium
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#RedOnion
+:RedOnion rdf:type owl:Class ;
+          rdfs:subClassOf :Onion ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasSpiciness ;
+                            owl:someValuesFrom :Mild
+                          ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#RedPepper
+:RedPepper rdf:type owl:Class ;
+           rdfs:subClassOf :Pepper ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasSpiciness ;
+                             owl:someValuesFrom :Medium
+                           ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Rice
+:Rice rdf:type owl:Class ;
+      rdfs:subClassOf :SecondaryFiller .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Ricotta
+:Ricotta rdf:type owl:Class ;
+         rdfs:subClassOf :Cheese .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Salsa
+:Salsa rdf:type owl:Class ;
+       rdfs:subClassOf :Condements .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SecondaryFiller
+:SecondaryFiller rdf:type owl:Class ;
+                 rdfs:subClassOf :Filler .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Shell
+:Shell rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#ShellTypeValuePartition
+:ShellTypeValuePartition rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Hard
+                                                             :Soft
+                                                           )
+                                             ] ;
+                         rdfs:subClassOf :ValuePartition ;
+                         owl:disjointWith :SpicinessValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Soft
+:Soft rdf:type owl:Class ;
+      rdfs:subClassOf :ShellTypeValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#SpicinessValuePartition
+:SpicinessValuePartition rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Hot
+                                                             :Medium
+                                                             :Mild
+                                                           )
+                                             ] ;
+                         rdfs:subClassOf :ValuePartition .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Taco
+:Taco rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Tomato
+:Tomato rdf:type owl:Class ;
+        rdfs:subClassOf :Topping .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#Topping
+:Topping rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#ValuePartition
+:ValuePartition rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#WhiteOnion
+:WhiteOnion rdf:type owl:Class ;
+            rdfs:subClassOf :Onion ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSpiciness ;
+                              owl:someValuesFrom :Mild
+                            ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#YellowOnion
+:YellowOnion rdf:type owl:Class ;
+             rdfs:subClassOf :Onion ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSpiciness ;
+                               owl:someValuesFrom :Mild
+                             ] .
+
+
+###  http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#YellowPepper
+:YellowPepper rdf:type owl:Class ;
+              rdfs:subClassOf :Pepper ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasSpiciness ;
+                                owl:someValuesFrom :Mild
+                              ] .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Restaurant
+:Restaurant rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.taco.com/ontologies/taco.owl#Beef
+:Beef rdf:type owl:NamedIndividual ,
+               :Meat .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Brown
+:Brown rdf:type owl:NamedIndividual ,
+                :Rice .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Cannellini
+:Cannellini rdf:type owl:NamedIndividual ,
+                     :Beans .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Catering
+:Catering rdf:type owl:NamedIndividual ,
+                   :Restaurant ;
+          :hasRating "4"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Cheeder
+:Cheeder rdf:type owl:NamedIndividual ,
+                  :Cheese .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Chicken
+:Chicken rdf:type owl:NamedIndividual ,
+                  :Meat .
+
+
+###  http://www.taco.com/ontologies/taco.owl#DaBomb
+:DaBomb rdf:type owl:NamedIndividual ,
+                 :HotSause .
+
+
+###  http://www.taco.com/ontologies/taco.owl#DevilsDen
+:DevilsDen rdf:type owl:NamedIndividual ,
+                    :Restaurant ;
+           :hasRating "4"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Fish
+:Fish rdf:type owl:NamedIndividual ,
+               :Meat .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Fotins
+:Fotins rdf:type owl:NamedIndividual ,
+                 :Cheese .
+
+
+###  http://www.taco.com/ontologies/taco.owl#FranksRedHot
+:FranksRedHot rdf:type owl:NamedIndividual ,
+                       :HotSause .
+
+
+###  http://www.taco.com/ontologies/taco.owl#GreenSalsa
+:GreenSalsa rdf:type owl:NamedIndividual ,
+                     :Salsa .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Guacamole
+:Guacamole rdf:type owl:NamedIndividual ,
+                    :Condements .
+
+
+###  http://www.taco.com/ontologies/taco.owl#HardCornTortilla
+:HardCornTortilla rdf:type owl:NamedIndividual ,
+                           :Shell .
+
+
+###  http://www.taco.com/ontologies/taco.owl#HardFlourTortilla
+:HardFlourTortilla rdf:type owl:NamedIndividual ,
+                            :Shell .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Hilltop
+:Hilltop rdf:type owl:NamedIndividual ,
+                  :Restaurant ;
+         :hasRating "4"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Jalapeno
+:Jalapeno rdf:type owl:NamedIndividual ,
+                   :Pepper .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Jasmine
+:Jasmine rdf:type owl:NamedIndividual ,
+                  :Rice .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Ketchup
+:Ketchup rdf:type owl:NamedIndividual ,
+                  :Condements .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Kidney
+:Kidney rdf:type owl:NamedIndividual ,
+                 :Beans .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Lettuce
+:Lettuce rdf:type owl:NamedIndividual ,
+                  :Topping .
+
+
+###  http://www.taco.com/ontologies/taco.owl#LettuceShell
+:LettuceShell rdf:type owl:NamedIndividual ,
+                       :Shell .
+
+
+###  http://www.taco.com/ontologies/taco.owl#LimeJuice
+:LimeJuice rdf:type owl:NamedIndividual ,
+                    :Condements .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Manchego
+:Manchego rdf:type owl:NamedIndividual ,
+                   :Cheese .
+
+
+###  http://www.taco.com/ontologies/taco.owl#MeatLoversTaco
+:MeatLoversTaco rdf:type owl:NamedIndividual ,
+                         :MeatTacos ;
+                :fromRestaurant :Hilltop ;
+                :hasCondiment :RedSalsa ,
+                              :SourCream ;
+                :hasFilling :Beef ,
+                            :Chicken ,
+                            :Pinto ;
+                :hasShell :SoftFlourTortilla ;
+                :hasTopping :Cheeder ,
+                            :Lettuce ,
+                            :Tomato ,
+                            :WhiteOnion ,
+                            :YellowBell ;
+                :alwaysForSale "true"^^xsd:boolean ;
+                :hasPrice 9.99 ;
+                :hasRating "5"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Memorial
+:Memorial rdf:type owl:NamedIndividual ,
+                   :Restaurant ;
+          :hasRating "3"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#NoMeatNoProblemTaco
+:NoMeatNoProblemTaco rdf:type owl:NamedIndividual ,
+                              :NonMeatTacos ;
+                     :fromRestaurant :DevilsDen ;
+                     :hasCondiment :Guacamole ,
+                                   :LimeJuice ,
+                                   :RedSalsa ,
+                                   :SourCream ;
+                     :hasFilling :Brown ,
+                                 :Cannellini ,
+                                 :Pinto ,
+                                 :SpicyTofu ;
+                     :hasShell :LettuceShell ;
+                     :hasTopping :Cheeder ,
+                                 :Lettuce ,
+                                 :RedBell ,
+                                 :RedOnion ,
+                                 :Tomato ,
+                                 :YellowBell ;
+                     :alwaysForSale "true"^^xsd:boolean ;
+                     :hasPrice 11.25 ;
+                     :hasRating "3"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#PepperJack
+:PepperJack rdf:type owl:NamedIndividual ,
+                     :Cheese .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Pinto
+:Pinto rdf:type owl:NamedIndividual ,
+                :Beans .
+
+
+###  http://www.taco.com/ontologies/taco.owl#RedBell
+:RedBell rdf:type owl:NamedIndividual ,
+                  :Pepper .
+
+
+###  http://www.taco.com/ontologies/taco.owl#RedOnion
+:RedOnion rdf:type owl:NamedIndividual ,
+                   :Onion .
+
+
+###  http://www.taco.com/ontologies/taco.owl#RedSalsa
+:RedSalsa rdf:type owl:NamedIndividual ,
+                   :Salsa .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SoftCornTortilla
+:SoftCornTortilla rdf:type owl:NamedIndividual ,
+                           :Shell .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SoftFlourTortilla
+:SoftFlourTortilla rdf:type owl:NamedIndividual ,
+                            :Shell .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SourCream
+:SourCream rdf:type owl:NamedIndividual ,
+                    :Condements .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Soy
+:Soy rdf:type owl:NamedIndividual ,
+              :MeatSubstitute .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SpicyBeef
+:SpicyBeef rdf:type owl:NamedIndividual ,
+                    :Meat .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SpicyChicken
+:SpicyChicken rdf:type owl:NamedIndividual ,
+                       :Meat .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SpicyLoversTaco
+:SpicyLoversTaco rdf:type owl:NamedIndividual ,
+                          :MeatTacos ;
+                 :fromRestaurant :DevilsDen ;
+                 :hasCondiment :DaBomb ,
+                               :LimeJuice ,
+                               :RedSalsa ;
+                 :hasFilling :Jasmine ,
+                             :Pinto ,
+                             :SpicyBeef ,
+                             :SpicyChicken ;
+                 :hasShell :HardCornTortilla ;
+                 :hasTopping :Jalapeno ,
+                             :Tomato ,
+                             :YellowBell ;
+                 :alwaysForSale "true"^^xsd:boolean ;
+                 :hasPrice 13.99 ;
+                 :hasRating "4"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SpicySoy
+:SpicySoy rdf:type owl:NamedIndividual ,
+                   :MeatSubstitute .
+
+
+###  http://www.taco.com/ontologies/taco.owl#SpicyTofu
+:SpicyTofu rdf:type owl:NamedIndividual ,
+                    :MeatSubstitute .
+
+
+###  http://www.taco.com/ontologies/taco.owl#StuffedTaco
+:StuffedTaco rdf:type owl:NamedIndividual ,
+                      :MeatTacos ;
+             :fromRestaurant :Memorial ;
+             :hasCondiment :Guacamole ,
+                           :Ketchup ,
+                           :SourCream ;
+             :hasFilling :Chicken ,
+                         :Kidney ,
+                         :Pinto ,
+                         :White ;
+             :hasShell :SoftFlourTortilla ;
+             :hasTopping :Cheeder ,
+                         :Lettuce ,
+                         :YellowOnion ;
+             :alwaysForSale "false"^^xsd:boolean ;
+             :hasPrice 7.99 ;
+             :hasRating "4"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Tofu
+:Tofu rdf:type owl:NamedIndividual ,
+               :MeatSubstitute .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Tomato
+:Tomato rdf:type owl:NamedIndividual ,
+                 :Topping .
+
+
+###  http://www.taco.com/ontologies/taco.owl#Valentinas
+:Valentinas rdf:type owl:NamedIndividual ,
+                     :HotSause .
+
+
+###  http://www.taco.com/ontologies/taco.owl#VeggieOverloadTaco
+:VeggieOverloadTaco rdf:type owl:NamedIndividual ,
+                             :NonMeatTacos ;
+                    :fromRestaurant :Catering ;
+                    :hasCondiment :GreenSalsa ,
+                                  :Guacamole ,
+                                  :SourCream ;
+                    :hasFilling :Cannellini ,
+                                :Jasmine ,
+                                :Soy ;
+                    :hasShell :SoftCornTortilla ;
+                    :hasTopping :Lettuce ,
+                                :Tomato ,
+                                :YellowBell ,
+                                :YellowOnion ;
+                    :alwaysForSale "false"^^xsd:boolean ;
+                    :hasPrice 6.99 ;
+                    :hasRating "3"^^xsd:int .
+
+
+###  http://www.taco.com/ontologies/taco.owl#White
+:White rdf:type owl:NamedIndividual ,
+                :Rice .
+
+
+###  http://www.taco.com/ontologies/taco.owl#WhiteOnion
+:WhiteOnion rdf:type owl:NamedIndividual ,
+                     :Onion .
+
+
+###  http://www.taco.com/ontologies/taco.owl#YellowBell
+:YellowBell rdf:type owl:NamedIndividual ,
+                     :Pepper .
+
+
+###  http://www.taco.com/ontologies/taco.owl#YellowOnion
+:YellowOnion rdf:type owl:NamedIndividual ,
+                      :Onion .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BellPepper
+                :GreenPepper
+                :JalapenoPepper
+                :RedPepper
+                :YellowPepper
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheeder
+                :Fotins
+                :Manchego
+                :PepperJack
+                :Ricotta
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheese
+                :Lettuce
+                :Onion
+                :Pepper
+                :Tomato
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheese
+                :Lettuce
+                :Onion
+                :Tomato
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Condements
+                :Filler
+                :Shell
+                :Taco
+                :Topping
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Hot
+                :Medium
+                :Mild
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :RedOnion
+                :WhiteOnion
+                :YellowOnion
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
