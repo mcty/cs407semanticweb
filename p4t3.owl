@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/tts/ontologies/2019/10/untitled-ontology-9#> .
+@prefix : <http://www.taco.com/ontologies/taco.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
